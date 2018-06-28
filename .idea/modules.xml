@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Projects-cicd_pipeline.iml" filepath="$PROJECT_DIR$/.idea/modules/Projects-cicd_pipeline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Projects-cicd_pipeline_vars.iml" filepath="$PROJECT_DIR$/.idea/modules/Projects-cicd_pipeline_vars.iml" group="cicd_pipeline" />
+      <module fileurl="file://$PROJECT_DIR$/cicd_pipeline.iml" filepath="$PROJECT_DIR$/cicd_pipeline.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cicd_pipeline_groovy.iml" filepath="$PROJECT_DIR$/.idea/modules/cicd_pipeline_groovy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cicd_pipeline_main.iml" filepath="$PROJECT_DIR$/.idea/modules/cicd_pipeline_main.iml" group="cicd_pipeline" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cicd_pipeline_test.iml" filepath="$PROJECT_DIR$/.idea/modules/cicd_pipeline_test.iml" group="cicd_pipeline" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cicd_pipeline_vars.iml" filepath="$PROJECT_DIR$/.idea/modules/cicd_pipeline_vars.iml" />
+    </modules>
+  </component>
+</project>
