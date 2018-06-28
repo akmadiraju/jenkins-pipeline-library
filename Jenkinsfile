@@ -1,30 +1,31 @@
 #!groovy
 
+p = projectProperties().useGitVersion()
+utils.useArtifactory(category: 'internal')
 
-try {
+pipeline {
+  agent
+  options {
+    timestamps()
+    ansiColor('xterm')
+  }
+  stages {
+    stage('Build') {
+      steps {
+        gradleBuild(tasks: 'assemble')
+      }
+    }
 
-  stage 'Checkout Code'
-  node {
-    deleteDir()
-    checkout scm
-    stash 'sources'
+    stage('Unit Test') {
+      steps {
+        gradleBuild(tasks: 'check -Dhttp.socketTimeout=60000 -Dhttp.connectionTimeout=60000')
+      }
+    }
   }
 
-  stage 'Gradle Build'
-  node {
-    deleteDir()
-    unstash 'sources'
-    gradleBuild {}
-    stash includes: '**/*.jar,**/*.war', name: 'binaries'
+  post {
+    always {
+      junit '**/build/test-results/test/TEST*.xml' // displays test results in jenkins console
+    }
   }
-
-
-
-} catch (Exception ex) {
-  sendFailureNotifications {
-    emailCulprits = true // emails the suspected commit culprit(s)
-    // notifySlackChannel = '<channel_name>' // send notification to the team's slack channel
-  }
-
-  throw ex // re-throw so that the exception bubbles up to the console
 }
