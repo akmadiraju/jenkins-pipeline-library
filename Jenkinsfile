@@ -12,15 +12,13 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        gradleBuild(tasks: 'assemble')
+        gradleBuild
+        {
+          tasks= 'clean build'
+        }
       }
     }
 
-    stage('Unit Test') {
-      steps {
-        gradleBuild(tasks: 'check -Dhttp.socketTimeout=60000 -Dhttp.connectionTimeout=60000')
-      }
-    }
   }
 
   post {
