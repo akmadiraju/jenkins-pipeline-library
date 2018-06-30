@@ -28,7 +28,7 @@ def call(Map config = [:]){
     if (!withJunit){
         gradleCmd.add("-x test")
     }
-    def greet = "Hello World"
+    def greet = "la -la"
     
     sh "echo ${greet}"
 
