@@ -32,7 +32,7 @@ def call(Map config = [:]){
     
     sh "echo ${greet}"
 
-    sh "${gradleCmd.unique().join(" ")}"
+    //sh "${gradleCmd.unique().join(" ")}"
 }
 
 return this;
