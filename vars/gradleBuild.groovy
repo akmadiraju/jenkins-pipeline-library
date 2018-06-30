@@ -30,7 +30,7 @@ def call(Map config = [:]){
     }
     def greet = "la -la"
     
-    sh "echo ${greet}"
+    sh "echo ***** ${greet} *****"
 
     //sh "${gradleCmd.unique().join(" ")}"
 }
