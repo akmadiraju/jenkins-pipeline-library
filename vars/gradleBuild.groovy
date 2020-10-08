@@ -8,35 +8,15 @@ def call(Closure body){
 }
 
 def call(Map config = [:]){
+    sh "./gradlew clean build"
 
-    gradleHmme = config.getOrDefault('gradleHme', '~/.sdkman/candidates/gradle/current/bin/gradle')
-    withWrapper = config.getOrDefault('withWrapper', true)
-    withJunit = config.getOrDefault('withJunit', false)
-    gradleOpts = config.getOrDefault('goal','clean build')
+    greeting=Hello
+    echo "This is the $greeting" 
 
-    def gradleCmd = []
-    if (withJunit){
-        if (!(fileExists('./gradlew'))){
-            throw "Wrapper file not found"
-        }else{
-            gradleCmd.add("./gradlew")
-        }
-    }else {
-        gradleCmd.add(gradleHmme)
+    withCredentials([usernamePassword(credentialsId: 'artifactory', passwordVariable: 'password', usernameVariable: 'username')]) {
+        sh "gradle -Ppassword=${password} upload"
     }
-    gradleCmd.add(gradleOpts)
-    if (!withJunit){
-        gradleCmd.add("-x test")
-    }
-    def greet = "ls -la"
     
-    sh "echo * ${greet} "
-    
-    def hello = "Hello World"
-    
-    sh "echo **** ${hello} *****"
-
-    //sh "${gradleCmd.unique().join(" ")}"
 }
 
 return this;
