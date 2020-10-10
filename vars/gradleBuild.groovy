@@ -16,7 +16,6 @@ def call(Map config = [:]){
     withCredentials([usernamePassword(credentialsId: 'artifactory', passwordVariable: 'password', usernameVariable: 'username')]) {
         sh "gradle -Ppassword=${password} upload"
     }
-    
 }
 
 return this;
